@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 body {
@@ -9,8 +15,8 @@ body {
   max-width: 1252px;
   margin: 0 auto;
   display: flex;
+  gap: 218px;
   padding-top: 25px;
-  gap: 150px;
 }
 
 
@@ -19,6 +25,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  flex: 1 1 auto
 }
 
 .head__h1 {
@@ -71,7 +78,10 @@ body {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  gap: 20px;
+}
+
+.all {
+  flex: 0 0 50%;
 }
 
 .card__article {
@@ -79,14 +89,21 @@ body {
   box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.08);
   background: rgba(255, 255, 255, 1);
   padding: 24px;
-  flex: 1 1 auto;
-  max-width: 312px;
+  flex: 0 0 312px;
   &.test {
-    max-width: calc(312px * 2 + 65px);
-    margin-top: 20px;
     display: flex;
-    padding: 0;  
-} 
+    padding: 0;
+    flex-grow: 1;
+    margin-top: 20px;
+  } 
+  &.most__article {
+      display: flex;
+      flex-direction: column;
+  }
+}
+
+.most__article .card__content{
+  padding: 0;
 }
 
 .s1 {
@@ -180,20 +197,23 @@ hr {
 .all__card {
   display: flex;
   flex-wrap: nowrap;
-  gap: 24px;
-  height: 100%;
+  gap: 20px;
+}
+
+.card {
+  gap: 20px;
 }
 
 .card__padding {
   padding: 0;
-  min-height: 100%;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
 
 .card__content {
   padding: 24px;
-  flex-grow: 1;
+  flex: 1 1 auto;
 }
 
 .card__fixed {
@@ -201,7 +221,7 @@ hr {
 }
 
 .card__footer {
-  flex-shrink: 0;
+  flex: 0 0 auto;
 }
 
 .hr__padding {
@@ -215,7 +235,7 @@ hr {
 }
 
 .card__row {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 .card__row .s1{
@@ -239,14 +259,36 @@ hr {
     margin-bottom: 16px;
 }
 
-.card__image {
+.card__image img{
     flex: 0 0 240px;
 }
 
-@media (max-width: 1220px) {
+@media (max-width: 768px)  {
+  .all {
+    display: flex;
+    flex-direction: column;
+  }
+  .all__card {
+    flex-wrap:wrap;
+  }
+  .card__padding .card__image img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@media (max-width: 1200px) {
     .container {
         flex-wrap: wrap;
         justify-content: center;
         padding: 10px;
     }
+    .head {
+      flex: 0 0 auto;
+    }
+    .all {
+      flex: 1 1 auto;
+    }
 }
+
