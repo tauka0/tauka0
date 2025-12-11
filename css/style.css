@@ -263,75 +263,80 @@ hr {
     flex: 0 0 240px;
 }
 
+@media (max-width: 1200px) {
+    .container {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px;
+        gap: 50px
+    }
+    .head {
+      flex: 0 0 auto;
+    }
+
+    .head h1, .head__contact{
+      text-align: center;
+    }
+    
+    .list {
+      margin: 0 auto;
+    }
+
+    .all {
+      flex: 1 1 auto;
+    }
+}
+
 @media (max-width: 768px)  {
   .all {
     display: flex;
     flex-direction: column;
+    justify-content: center;
   }
   .all__card {
     flex-wrap:wrap;
   }
   .card__padding .card__image img{
     object-fit: cover;
-    height: 100%;
-    width: 100%;
+  }
+  .test {
+    flex-direction: column;
   }
 }
 
-/* ========== ФИКС-АДАПТИВ: УБИРАЕМ ХУЙНЮ, ДОБАВЛЯЕМ REM И FR ========== */
-* { box-sizing: border-box; } /* Если не вставил — вот оно, сука */
 
-.container {
-  max-width: 1400px;
-  padding: 0 1rem; /* 16px rem */
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column; /* База — столбик для мобилки */
-  gap: 4rem; /* 64px, но rem — масштабируется */
+@media (max-width: 576px) {
+  .head__h1 {
+    font-size: 46px;
+  }
+  
+  .head__list {
+    font-size: 22px;
+  }
+
+  .head__contact a {
+    font-size: 25px;
+  }
+
 }
 
-.card {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem; /* 32px rem */
-  justify-content: center; /* Центр везде */
-}
+@media (max-width: 375px) {
+  .container {
+    gap: 30px;
+  }
 
-.card__article {
-  flex: 1 1 100%; /* Мобилка — вся ширина */
-  max-width: 100%;
-  min-width: 280px; /* Не жмётся ниже */
-}
+  .head__h1 {
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 0px;
+  }
+  
+  .head__list {
+    font-size: 18px;
+  }
 
-.card__article.test {
-  flex: 1 1 100%; /* Пока как обычная, растянется ниже */
-}
+  .head__contact a {
+    font-size: 18px;
+  }
 
-/* Планшет: 2 в ряд */
-@media (min-width: 768px) {
-  .container { flex-direction: row; gap: 6rem; } /* Хедер и карточки рядом */
-  .head { flex: 1; } /* Хедер занимает место */
-  .card { flex: 1; gap: 2rem; }
-  .card__article { flex: 1 1 calc(50% - 1rem); } /* 2 колонки */
-  .card__article.test { flex: 1 1 100%; } /* Тестовая на всю */
-}
-
-/* Десктоп: 3 в ряд */
-@media (min-width: 1024px) {
-  .card__article { flex: 1 1 1fr; } /* 3 равные fr */
-  .card__article.test { flex: 2 1 2fr; } /* Тестовая в 2 раза шире */
-}
-
-/* Супер-мобилка: сжимаем шрифты и gap */
-@media (max-width: 480px) {
-  .head__h1 { font-size: 2rem; } /* 32px */
-  .head__list { font-size: 1.125rem; } /* 18px */
-  .container { gap: 2rem; }
-  .card { gap: 1rem; }
-  .card__h1 { font-size: 1.25rem; } /* Заголовки поменьше */
-}
-
-@media (max-width: 480px) {
-  .container { gap: 80px; }
-  .card { gap: 24px; }
 }
