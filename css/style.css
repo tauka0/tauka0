@@ -326,17 +326,24 @@ hr {
   }
 
   .head__h1 {
-    font-size: 40px;
+    font-size: 30px;
     text-align: center;
     margin-bottom: 0px;
   }
   
   .head__list {
-    font-size: 18px;
+    font-size: 15px;
+  }
+
+  .head__list ul {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
 
   .head__contact a {
-    font-size: 18px;
+    font-size: 15px;
   }
 
 }
