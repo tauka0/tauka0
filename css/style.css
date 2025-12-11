@@ -278,17 +278,50 @@ hr {
   }
 }
 
-@media (max-width: 1200px) {
-    .container {
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 10px;
-    }
-    .head {
-      flex: 0 0 auto;
-    }
-    .all {
-      flex: 1 1 auto;
-    }
+/* АДАПТИВ — ВСТАВЬ СЮДА, СУКА */
+.container {
+  max-width: 1400px;
+  padding: 0 20px;
+  margin: 0 auto;
 }
 
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+}
+
+.card__article {
+  flex: 1 1 100%;
+  max-width: none;
+}
+
+@media (min-width: 768px) {
+  .card__article {
+    flex: 1 1 calc(50% - 16px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .card__article {
+    flex: 1 1 calc(33.333% - 21px);
+  }
+  .card__article.test {
+    flex: 2 1 calc(66.666% - 21px);
+  }
+}
+
+@media (max-width: 767px) {
+  .head {
+    text-align: center;
+  }
+  .head__h1 { font-size: 42px; }
+  .head__list { font-size: 20px; }
+  .head__contact { justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  .container { gap: 80px; }
+  .card { gap: 24px; }
+}
