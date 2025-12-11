@@ -333,6 +333,7 @@ hr {
   
   .head__list {
     font-size: 15px;
+    margin: 0;
   }
 
   .head__list ul {
