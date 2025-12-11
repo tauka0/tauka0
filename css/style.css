@@ -278,47 +278,57 @@ hr {
   }
 }
 
-/* АДАПТИВ — ВСТАВЬ СЮДА, СУКА */
+/* ========== ФИКС-АДАПТИВ: УБИРАЕМ ХУЙНЮ, ДОБАВЛЯЕМ REM И FR ========== */
+* { box-sizing: border-box; } /* Если не вставил — вот оно, сука */
+
 .container {
   max-width: 1400px;
-  padding: 0 20px;
+  padding: 0 1rem; /* 16px rem */
   margin: 0 auto;
+  display: flex;
+  flex-direction: column; /* База — столбик для мобилки */
+  gap: 4rem; /* 64px, но rem — масштабируется */
 }
 
 .card {
   display: flex;
   flex-wrap: wrap;
-  gap: 32px;
-  justify-content: center;
+  gap: 2rem; /* 32px rem */
+  justify-content: center; /* Центр везде */
 }
 
 .card__article {
-  flex: 1 1 100%;
-  max-width: none;
+  flex: 1 1 100%; /* Мобилка — вся ширина */
+  max-width: 100%;
+  min-width: 280px; /* Не жмётся ниже */
 }
 
+.card__article.test {
+  flex: 1 1 100%; /* Пока как обычная, растянется ниже */
+}
+
+/* Планшет: 2 в ряд */
 @media (min-width: 768px) {
-  .card__article {
-    flex: 1 1 calc(50% - 16px);
-  }
+  .container { flex-direction: row; gap: 6rem; } /* Хедер и карточки рядом */
+  .head { flex: 1; } /* Хедер занимает место */
+  .card { flex: 1; gap: 2rem; }
+  .card__article { flex: 1 1 calc(50% - 1rem); } /* 2 колонки */
+  .card__article.test { flex: 1 1 100%; } /* Тестовая на всю */
 }
 
+/* Десктоп: 3 в ряд */
 @media (min-width: 1024px) {
-  .card__article {
-    flex: 1 1 calc(33.333% - 21px);
-  }
-  .card__article.test {
-    flex: 2 1 calc(66.666% - 21px);
-  }
+  .card__article { flex: 1 1 1fr; } /* 3 равные fr */
+  .card__article.test { flex: 2 1 2fr; } /* Тестовая в 2 раза шире */
 }
 
-@media (max-width: 767px) {
-  .head {
-    text-align: center;
-  }
-  .head__h1 { font-size: 42px; }
-  .head__list { font-size: 20px; }
-  .head__contact { justify-content: center; }
+/* Супер-мобилка: сжимаем шрифты и gap */
+@media (max-width: 480px) {
+  .head__h1 { font-size: 2rem; } /* 32px */
+  .head__list { font-size: 1.125rem; } /* 18px */
+  .container { gap: 2rem; }
+  .card { gap: 1rem; }
+  .card__h1 { font-size: 1.25rem; } /* Заголовки поменьше */
 }
 
 @media (max-width: 480px) {
